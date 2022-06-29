@@ -1,12 +1,11 @@
 from rest_framework import viewsets, filters
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
+from medina_test.apps.product.api import filters as filters_product
 from medina_test.apps.product.api import serializers as serializers_product
 from medina_test.apps.user.api import permissions as permissions_user
 from medina_test.apps.product import models as models_product
 from medina_test.apps.user.api import pagination as pagination_global
-from medina_test.apps.product.api import filters as filters_product
-
 
 class WeatherTypeViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated & permissions_user.AdminOnly]
