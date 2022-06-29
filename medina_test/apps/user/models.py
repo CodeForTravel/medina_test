@@ -43,6 +43,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         },
     )
 
+    class UserTypes(models.IntegerChoices):
+        ADMIN = 1, _("Admin")
+        VENDOR = 3, _("Vendor")
+        CONSUMER = 2, _("Consumer")
+        
+
+    user_type = models.IntegerField(
+        _("User Type"), choices=UserTypes.choices, null=True, blank=True
+    )
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     """Use the email as unique username."""
@@ -68,3 +78,22 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _("user")
         verbose_name_plural = _("users")
+
+
+    @property
+    def is_admin(self):
+        if self.user_type == self.UserTypes.ADMIN:
+            return True
+        return False
+
+    @property
+    def is_consumer(self):
+        if self.user_type == self.UserTypes.CONSUMER:
+            return True
+        return False
+
+    @property
+    def is_vendor(self):
+        if self.user_type == self.UserTypes.VENDOR:
+            return True
+        return False
