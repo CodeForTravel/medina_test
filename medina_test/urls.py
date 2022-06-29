@@ -26,4 +26,6 @@ urlpatterns = [
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
 
     path("api/v1/user/", include("medina_test.apps.user.api.urls")),
+    path("api/v1/product/", include("medina_test.apps.product.api.urls")),
+
 ]
