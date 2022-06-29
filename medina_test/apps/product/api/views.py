@@ -19,7 +19,6 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
     serializer_class = serializers_product.ProductCategorySerializer
 
 
-
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = models_product.Product.objects.all()
     serializer_class = serializers_product.ProductSerializer
