@@ -5,7 +5,7 @@ from medina_test.apps.product import models as models_product
 class WeatherTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = models_product.WeatherType
-        fields = ['id', 'high_temp', "low_temp" "name"]
+        fields = ['id', 'high_temp', "low_temp", "name"]
 
 
 class ProductCategorySerializer(serializers.ModelSerializer):
