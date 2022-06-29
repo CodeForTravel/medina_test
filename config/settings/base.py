@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "rest_framework",
     # custom apps
     "medina_test.apps.user",
-    "medina_test.apps.home",
+    "medina_test.apps.product",
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
@@ -132,7 +132,7 @@ DATABASES = {
 AUTH_USER_MODEL = "user.User"
 
 # LOGIN_URL = reverse_lazy("core:login")
-# LOGIN_REDIRECT_URL = reverse_lazy("core:home")
+# LOGIN_REDIRECT_URL = reverse_lazy("core:product")
 # LOGOUT_REDIRECT_URL = reverse_lazy("core:login")
 
 

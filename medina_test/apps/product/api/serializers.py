@@ -1,23 +1,23 @@
 from rest_framework import  serializers
-from medina_test.apps.home import models as models_home
+from medina_test.apps.product import models as models_product
 
 
 class WeatherTypeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models_home.WeatherType
+        model = models_product.WeatherType
         fields = ['id', 'high_temp', "low_temp" "name"]
 
 
 class ProductCategorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = models_home.ProductCategory
+        model = models_product.ProductCategory
         fields = ['id', 'name', "description"]
 
 
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models_home.Product
+        model = models_product.Product
         fields = ["id", 'category', 'weather_type', "title", 'description', "quantity"]
 
 

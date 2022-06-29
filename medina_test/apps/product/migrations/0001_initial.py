@@ -36,8 +36,8 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=255)),
                 ('description', models.TextField(blank=True, null=True)),
                 ('quantity', models.IntegerField(default=1)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.productcategory')),
-                ('weather_type', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='home.weathertype')),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='product.productcategory')),
+                ('weather_type', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='product.weathertype')),
             ],
         ),
     ]
