@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # 3rd party apps
-
+    "rest_framework",
     # custom apps
     "medina_test.apps.user",
     "medina_test.apps.home",
