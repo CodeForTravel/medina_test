@@ -13,9 +13,9 @@ CONSTANCE_CONFIG = {
     "WEATHER_DATA":(
     '{\
     "main": "Clouds",\
-    "temp": 307.18,\
-    "temp_min": 307.18,\
-    "temp_max": 307.18, \
+    "temp": 34,\
+    "temp_min": 30,\
+    "temp_max": 40, \
     }',
     "Weather Condition",
     str,
