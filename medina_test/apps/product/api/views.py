@@ -1,7 +1,11 @@
+import ast
+from gettext import install
 from rest_framework import viewsets, filters, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from constance import config as constance_config
+
 
 from medina_test.apps.product.api import filters as filters_product
 from medina_test.apps.product.api import serializers as serializers_product
@@ -47,7 +51,17 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'], url_path="recommendations")
     def product_recommendation(self, request):
-        products = self.get_queryset()
+
+        weather_data = constance_config.WEATHER_DATA
+        weather_data = dict(ast.literal_eval(weather_data))
+        current_temp = int(weather_data.get('temp'))
+        weather_objs = models_product.WeatherType.objects.all()
+        filtered_weather_objs = []
+        for obj in weather_objs:
+            if current_temp >= obj.low_temp and current_temp<= obj.high_temp:
+                filtered_weather_objs.append(obj)
+
+        products = self.get_queryset().filter(weather_type__in=filtered_weather_objs)
         serializer = serializers_product.ProductSerializer(products,many=True)
         return Response({'data': serializer.data},status=status.HTTP_200_OK)
  
