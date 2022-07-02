@@ -45,12 +45,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     class UserTypes(models.IntegerChoices):
         ADMIN = 1, _("Admin")
-        VENDOR = 3, _("Vendor")
         CONSUMER = 2, _("Consumer")
+        VENDOR = 3, _("Vendor")
+        
         
 
     user_type = models.IntegerField(
-        _("User Type"), choices=UserTypes.choices, null=True, blank=True
+        _("User Type"), choices=UserTypes.choices, null=True, blank=True, default=UserTypes.ADMIN
     )
 
     USERNAME_FIELD = 'email'

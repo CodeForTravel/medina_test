@@ -3,7 +3,7 @@ DB_NAME=example_db
 DB_USER=postgres
 DB_PASSWORD=123456
 DB_PORT=5432
-EMAIL_NOREPLY=email_set_in_sendgrid@email.com
+EMAIL_NOREPLY=example@email.com
 
 WEATHER_API_URL=https://api.openweathermap.org/data/2.5/weather
 WEATHER_API_KEY=49611bbd929ed98af4fcfb28498f8d32
