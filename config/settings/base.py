@@ -13,6 +13,9 @@ import environ
 import os
 from django.urls import reverse_lazy
 
+# import all django-constance settings
+from medina_test.apps.user.constance_settings import *
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = environ.Path(__file__) - 3
@@ -40,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # 3rd party apps
     "rest_framework",
+    "constance",
     # custom apps
     "medina_test.apps.user",
     "medina_test.apps.product",
