@@ -13,6 +13,11 @@ import environ
 import os
 from django.urls import reverse_lazy
 
+# for django huey
+from redis import ConnectionPool
+from huey import RedisHuey
+
+
 # import all django-constance settings
 from medina_test.apps.user.constance_settings import *
 
@@ -24,6 +29,16 @@ env = environ.Env()
 env.read_env(".env")
 
 EMAIL_NOREPLY = env.str("EMAIL_NOREPLY")
+
+WEATHER_API_URL = env.str("WEATHER_API_URL")
+WEATHER_API_KEY = env.str("WEATHER_API_KEY")
+LONGITUDE = env.str("LONGITUDE")
+LATITUDE = env.str("LATITUDE")
+
+
+
+
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -44,9 +59,12 @@ INSTALLED_APPS = [
     # 3rd party apps
     "rest_framework",
     "constance",
+    "huey.contrib.djhuey",
+
     # custom apps
     "medina_test.apps.user",
     "medina_test.apps.product",
+    
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
@@ -170,3 +188,9 @@ USE_L10N = True
 USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Huey settings
+pool = ConnectionPool(host="localhost", port=6379, max_connections=20)
+HUEY = RedisHuey("news_portal", connection_pool=pool, utc=False)
+# End of Huey Settings
